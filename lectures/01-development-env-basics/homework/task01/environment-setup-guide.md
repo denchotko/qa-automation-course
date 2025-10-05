@@ -1,4 +1,4 @@
-# QA automation Environment Setup Guide"
+# QA automation Environment Setup Guide
 
 ## Description
 
