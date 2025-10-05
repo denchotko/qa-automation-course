@@ -1,11 +1,5 @@
 # Dev Tools Practice
 
-author: Denitsa Mihaylova
-date:2025-10-05
-Website:795 Bladers
-
----
-
 ## Start My practice session
 
 1. Open URL:[795 Bladers Practise Site](https://795bladers.lookcycle.com/en)
