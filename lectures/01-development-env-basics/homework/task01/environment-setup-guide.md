@@ -1,11 +1,6 @@
----
-Title:"QA automation Envirenment Setup Guide"
-author: Denitsa Mihaylova
-date:2025-10-04
-version: 1.0.0
----
+# QA automation Environment Setup Guide
 
-# Description
+## Description
 
 This is an environment setup guide designed to help you through the installation process, show you the structure and scope of the project, and help you with some common issues.
 
