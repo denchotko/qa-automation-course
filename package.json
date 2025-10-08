@@ -96,8 +96,5 @@
   "bugs": {
     "url": "https://github.com/denchotko/qa-automation-course/issues"
   },
-  "homepage": "https://github.com/denchotko/qa-automation-course#readme",
-  "author": "Denitsa Mihaylova",
-  "license": "MIT",
-  "dependencies": {}
+  "homepage": "https://github.com/denchotko/qa-automation-course#readme"
 }
