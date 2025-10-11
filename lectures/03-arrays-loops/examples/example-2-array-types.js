@@ -26,8 +26,3 @@ let errorMessages = [
   "Email format is invalid",
 ];
 console.log("Error messages:", errorMessages);
-
-
-
-
-
