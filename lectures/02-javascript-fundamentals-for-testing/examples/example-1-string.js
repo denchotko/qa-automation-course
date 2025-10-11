@@ -1,6 +1,7 @@
 //Test data as string
 
 let testUserEmail = "john.doe@test.company.com";
+
 let expectedSuccessMessage = "Login successful";
 let baseURL = "https://staging-app.com";
 
@@ -12,4 +13,10 @@ console.log(testMessage);
 let loginAttempt = `Attempting log for ${testUserEmail} on ${baseURL}`;
 console.log(loginAttempt);
 
-//Multi-line strings for complex test data
+// Multi-line strings for complex test data
+let testScenario = `
+User: ${testUserEmail};
+Expected: ${expectedSuccessMessage}
+Environment: ${baseURL}
+`;
+console.log(testScenario);
