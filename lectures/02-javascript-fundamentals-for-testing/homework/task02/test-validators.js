@@ -1,5 +1,5 @@
 /**
- * This file contain functions for building validationg tetsting system using comparison operators, logical operatotrs,
+ * This file contain functions for building validationg tetsting system using comparison operators, logical operators,
  * and string methods to verify test results and process response data.
  *
  *
