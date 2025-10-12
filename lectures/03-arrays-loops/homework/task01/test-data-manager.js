@@ -11,7 +11,7 @@
  * @returns {string}  - All three arrays in order   
  */
 
-export function intializeTestData() {
+export function initializeTestData() {
   let testUser = [];
   let testEnvironments = ["development", "staging", "production"];
   let browserTypes = ["Chrome", "Firefox", "Safari", "Edge"];
@@ -19,7 +19,7 @@ export function intializeTestData() {
   return [testUser, testEnvironments, browserTypes];
 }
 
-intializeTestData();
+initializeTestData();
 
 /**
  * Creates a function takes three parameters from previous fucntion
@@ -228,3 +228,7 @@ generateTestReport(
   ["email_notifications"]
 );
 //end of file
+
+export function task01Function() {
+  console.log("Task 1 executed");
+}
