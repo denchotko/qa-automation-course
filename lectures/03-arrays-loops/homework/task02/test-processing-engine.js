@@ -244,3 +244,7 @@ export function compareLoopProcessing(dataArray) {
 
 compareLoopProcessing([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 //ENd of file
+
+export function task02Function() {
+  console.log("Task 2 executed");
+}
