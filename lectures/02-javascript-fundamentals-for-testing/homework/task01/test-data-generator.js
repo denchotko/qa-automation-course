@@ -230,4 +230,3 @@ Total Execution   : ${totalExecutionTime.toFixed(2)}ms
   console.log(summary);
   return summary;
 }
-buildTestSummary("LoginTest", "staging", 50, 112.328);
