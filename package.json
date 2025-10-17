@@ -1,9 +1,9 @@
 {
-  "name": "y",
+  "name": "qa-automation-course",
   "version": "1.0.0",
   "type": "module",
   "description": "\"QA automation course project for learning JavaScript and Playwright\"",
-  "main": "y",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
