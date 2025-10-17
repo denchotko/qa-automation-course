@@ -14,9 +14,9 @@ function endTestSuite(suiteName, startTime) {
 
 const start = startTestSuite("Login Functionality Tests");
 
-setTimeout(() => endTestSuite("Login Functionality Tests", start), 2000);
+endTestSuite("Login Functionality Tests", start);
 
-function logTestStep(stepNumber, description, status) {
+function logTestStep(stepNumber, description, status = "unknown") {
   const timestamp = new Date().toISOString();
   const message = `[${timestamp}] Step ${stepNumber}: ${description} — Status: ${status.toUpperCase()}`;
 
@@ -30,7 +30,7 @@ function logTestStep(stepNumber, description, status) {
 logTestStep(1, "Login button is visible", "pass");
 logTestStep(2, "Login with invalid credentials", "fail");
 
-function generateTestReportThat(testResults) {
+function generateTestReport(testResults) {
   const { passed, failed, skipped } = testResults;
   const total = passed + failed + skipped;
   const passRate = ((passed / total) * 100).toFixed(2);
@@ -44,7 +44,7 @@ function generateTestReportThat(testResults) {
 
   return { total, passed, failed, skipped, passRate: `${passRate}%` };
 }
-generateTestReportThat({ passed: 28, failed: 10, skipped: 6 });
+generateTestReport({ passed: 28, failed: 10, skipped: 6 });
 
 function debugVariable(variableName, variableValue) {
   console.log("===Debuging Info===");
@@ -82,12 +82,20 @@ function logSystemInfo() {
   console.log(`age        : ${typeof age}`);
   console.log(`isLoggedIn : ${typeof isLoggedIn}`);
 
-  return {
-    timestamp,
-    usernameType: typeof username,
-    ageType: typeof age,
-    isLoggedInType: typeof isLoggedIn,
+  const info = {
+    timestamp: timestamp,
+    stringTypeExample: typeof testString,
+    numberTypeExample: typeof testNumber,
+    booleanTypeExample: typeof testBoolean,
   };
+
+  return info;
 }
 
-logSystemInfo();
+export {
+  startTestSuite,
+  endTestSuite,
+  logTestStep,
+  generateTestReport,
+  logSystemInfo,
+};

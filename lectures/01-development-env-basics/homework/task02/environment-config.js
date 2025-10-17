@@ -1,6 +1,6 @@
 const defaultEnvironmentConfig = {
   baseUrl: "https://demo-qa-site.com/developement",
-  TIMEOUT_MS: 15000,
+  timeout: 15000,
   debugMode: true,
 };
 

@@ -8,10 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "\"qa",
+    "qa",
     "automation",
     "testing",
-    "javascript\""
+    "javascript"
   ],
   "author": "Denitsa Mihaylova",
   "license": "ISC",
