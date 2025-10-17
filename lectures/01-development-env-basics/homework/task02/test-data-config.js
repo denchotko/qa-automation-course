@@ -1,50 +1,30 @@
 //Steps from 3 to 5 (Create test Date Configuration)
 
 const BASE_URL = "https://demo-qa-site.com";
-// eslint-disable-next-line no-unused-vars
-const TIMEOUT_MS = 30000;
 
-const apiEndpoints = {
-  login: "https://demo-qa-site.com/login",
-  users: "https://demo-qa-site.com/users",
-  products: "https://demo-qa-site.com/products",
+const DEFAULT_TIMEOUT = 30000;
+
+// A collection of API endpoints for the application.
+const API_ENDPOINTS = {
+  login: "/api/login",
+  users: "/api/users",
+  products: "/api/products",
 };
 
-let testUser = {
-  email: "testuser1@example.com",
-  password: "SecurePassword123",
-  expectWelcomeMessage: "Welcome to the dashboard",
-};
+// Using `let` for user credentials that might be reassigned in different test scenarios.
+let testUserEmail = "testuser1@example.com";
+let testUserPassword = "SecurePassword123";
+let adminUserEmail = "admin.user@example.com";
 
-let adminUser = {
-  email: "admin@exmple.com",
-  password: "adminSecret456",
-};
+// Expected text content for assertions.
+let expectedWelcomeMessage = "Welcome to the dashboard";
 
-let userId = 123;
-let isLoggedIn = true;
+// --- Feature Flags ---
+
+// Boolean flags to control test execution behavior.
 let debugMode = true;
 let runSlowTests = false;
 let useTestData = true;
-
-function loadTestScenario(userType) {
-  const activeUser = userType === "admin" ? adminUser : testUser;
-  console.log("Navigating to:", BASE_URL);
-  console.log("=== Test Scenario Loaded ===");
-
-  console.log("User Type:", userType);
-  console.log("Email:", activeUser.email);
-  console.log("Paswword", activeUser.password);
-  console.log("Login Endpoints:", apiEndpoints);
-
-  console.log("User ID type:", typeof userId);
-  console.log("User is logged in:", isLoggedIn);
-  console.log("Debug mode:", debugMode);
-  console.log("Slow tests:", runSlowTests);
-  console.log("Test data:", useTestData);
-}
-loadTestScenario("test");
-loadTestScenario("admin");
 
 // Code for building Data Validation function
 
@@ -78,17 +58,22 @@ function generateUniqueEmail(baseName) {
 generateUniqueEmail("testuser");
 
 //Code that shows the current timestamp when the configuration was loaded
-function LogTestConfiguration() {
-  const baseName = "testuser";
-  const minPasswordLenght = 8;
-  const emailDomain = "@testmail.com";
-  const timestamp = Date.now();
-  // Log configurations
-  console.log("===Test Configuration Loaded===");
-  console.log(`Base Name: ${baseName}`);
-  console.log(`Lenght: ${minPasswordLenght}`);
-  console.log(`Email Domain: ${emailDomain}`);
-  console.log(`Timestamp: ${timestamp}`);
+function logTestConfiguration() {
+  console.log("--- Current Test Configuration ---");
+  console.log(`Timestamp: ${new Date().toISOString()}`);
+  console.log(`Base URL: ${BASE_URL}`);
+  console.log(`Default Timeout: ${DEFAULT_TIMEOUT}`);
+  console.log("Configured API endpoints:", Object.keys(API_ENDPOINTS));
+  console.log(`Test User Email: ${testUserEmail}`);
+  console.log(`Test User Password: ${testUserPassword ? "***" : "<none>"}`);
+  console.log(`Admin User Email: ${adminUserEmail}`);
+  console.log(`Expected Welcome Message: ${expectedWelcomeMessage}`);
+  console.log(`Debug Mode: ${debugMode}`);
+  console.log(`Use Test Data: ${useTestData}`);
+  console.log(`Run Slow Tests: ${runSlowTests}`);
+  console.log("---------------------------------");
 }
 
-LogTestConfiguration();
+logTestConfiguration();
+
+export { validateEmail, generateUniqueEmail };

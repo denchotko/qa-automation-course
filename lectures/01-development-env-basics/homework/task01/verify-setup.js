@@ -13,21 +13,21 @@ function checkNpmVersion() {
 checkNpmVersion();
 
 function displayEnvironmentInfo() {
-  console.log("=== Environment Information ===");
+  console.log("--- Environment Verification ---");
 
-  const nodeVersion = checkNodeVersion();
-  const npmVersion = checkNpmVersion();
-  const osPlatform = process.platform;
+  checkNodeVersion();
+  checkNpmVersion();
+
+  const platform = process.platform;
+  console.log("Operating System:", platform);
+
   const currentDirectory = process.cwd();
+  console.log("Current working directory:", currentDirectory);
 
-  console.log("Operating System:", osPlatform);
-  console.log("Current Working Directory:", currentDirectory);
-
-  return {
-    nodeVersion,
-    npmVersion,
-    osPlatform,
-    currentDirectory,
-  };
+  console.log("------------------------------");
 }
-displayEnvironmentInfo();
+
+// Execute the main function to display environment information.
+// displayEnvironmentInfo();
+
+export { displayEnvironmentInfo };
