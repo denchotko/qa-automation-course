@@ -1,22 +1,20 @@
-// Example rawTestData array with one test data entry
-// const rawTestData = [["Login Test", "Passed", 120, "High"]];
+let rawTestData = [
+  ["login_functionality", "PASS", 245, "HIGH"],
+  ["user_registration", "FAIL", 1200, "HIGH"],
+  ["password_reset", "PASS", 800, "MEDIUM"],
+  ["profile_update", "PASS", 450, "MEDIUM"],
+  ["admin_dashboard", "FAIL", 2100, "LOW"],
+  ["logout_process", "PASS", 180, "LOW"],
+  ["payment_gateway", "FAIL", 1800, "HIGH"],
+  ["data_export", "SKIP", 0, "MEDIUM"],
+];
 
-// let [testName, testStatus, time, priority] = rawTestData[0];
-
-// console.log(`Name: ${testName}`);
-// console.log(`Status: ${testStatus}`);
-// console.log(`Execution Time: ${time}ms`);
-// console.log(`Priority: ${priority}`);
-
-// TRANSFORM DATA WITH MAP
-
-// 
-
-let formattedReports = rawTestData.map(test => {
+let formattedReports = rawTestData.map((test) => {
   let [testName, testStatus, time, priority] = test;
-  let icon = testStatus === "PASS" ? "✅" :
-             testStatus === "FAIL" ? "❌" : "❤️";
+  let icon = testStatus === "PASS" ? "✅" : testStatus === "FAIL" ? "❌" : "💙";
   return `${icon} ${testName} (${time}ms) - ${priority} priority`;
 });
 
-formattedReports.forEach(report => console.log(report));
+formattedReports.forEach((report) => console.log(report));
+console.log("=== RAW TEST DATA LOADED ===");
+console.log(`Total test cases: ${rawTestData.length}`);
