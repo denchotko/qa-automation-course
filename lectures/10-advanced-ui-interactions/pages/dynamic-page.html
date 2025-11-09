@@ -1,14 +1,51 @@
-document.getElementById("load-content").addEventListener("click", function () {
-const loading = document.getElementById("loading"); const content =
-document.getElementById("content"); // Show loading indicator
-loading.style.display = "block"; content.style.display = "none"; // Simulate
-async loading (2 seconds) setTimeout(function () { loading.style.display =
-"none"; content.style.display = "block"; }, 2000); });
-document.getElementById("show-hidden").addEventListener("click", function () {
-const hidden = document.getElementById("hidden-element"); setTimeout(function ()
-{ hidden.classList.remove("hidden"); }, 1000); });
-document.getElementById("show-alert").addEventListener("click", function () {
-alert("This is an alert!"); });
-document.getElementById("show-confirm").addEventListener("click", function () {
-if (confirm("Do you confirm this action?")) { alert("You clicked OK!"); } else {
-alert("You clicked Cancel!"); } });
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Content Practice</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 10px 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #loading {
+        color: #ff9800;
+        font-weight: bold;
+        display: none;
+      }
+      #content {
+        margin-top: 20px;
+        padding: 20px;
+        background: #e8f5e9;
+        border-radius: 4px;
+        display: none;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dynamic Content Test Page</h1>
+
+    <button id="load-content">Load Content</button>
+    <button id="show-hidden">Show Hidden Element</button>
+    <button id="show-alert">Show Alert</button>
+    <button id="show-confirm">Show Confirm</button>
+
+    <div id="loading">Loading...</div>
+    <div id="content">This content loaded dynamically!</div>
+    <div id="hidden-element" class="hidden">I was hidden!</div>
+
+    <script src="./dynamic-page-script.js"></script>
+  </body>
+</html>
