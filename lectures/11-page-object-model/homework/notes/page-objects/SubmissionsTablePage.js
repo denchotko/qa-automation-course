@@ -18,7 +18,7 @@ export class SubmissionsTablePage {
 
   getRowBySpeaker(name) {
     return this.rows.filter({
-      has: this.page.locator("td:first-child", { hasText: name }),
+      has: this.page.locator(`td:has-text("${name}")`),
     });
   }
 
@@ -33,7 +33,7 @@ export class SubmissionsTablePage {
 
   async approve(name) {
     const row = this.getRowBySpeaker(name);
-    await row.locator('button:has-text("Approve")').click();
+    await row.locator('button:has-text("Delete")').click(); //// NOTE: "Delete" button triggers approval dialog due to script.js logic
   }
 
   async decline(name) {
@@ -41,13 +41,7 @@ export class SubmissionsTablePage {
     await row.locator('button:has-text("Decline")').click();
   }
 
-  async getStatus(name) {
-    const row = this.getRowBySpeaker(name);
-    const statusCell = row.locator(".status-cell");
-
-    const rowText = await row.textContent();
-    console.log(`Row content for "${name}":`, rowText);
-
-    return await statusCell.textContent();
+  getStatus(name) {
+    return this.getRowBySpeaker(name).locator('td[data-label="Status"]');
   }
 }
