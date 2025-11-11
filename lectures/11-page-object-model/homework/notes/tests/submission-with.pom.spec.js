@@ -95,44 +95,55 @@ test("Verify table headers and total count", async ({ page }) => {
   expect(count).toBeGreaterThan(0);
 });
 
-test("Approve a submission and verify status", async ({ page }) => {
+test("Approve session — alert dialog + status update (row remains; total unchanged)", async ({
+  page,
+}) => {
   const tablePage = new SubmissionsTablePage(page);
   await tablePage.navigate();
+
+  const speaker = "John Doe";
+  const rowBefore = await tablePage.getRowBySpeaker(speaker).count();
+  const totalBefore = await tablePage.getTotalCount();
+
   page.once("dialog", async (dialog) => {
-    expect(dialog.type()).toBe("alert");
+    expect(dialog.message()).toBe(`Approved submission for ${speaker}.`);
     await dialog.accept();
   });
 
-  const speaker = "John Doe";
-  await tablePage.approve(speaker);
+  await page.waitForTimeout(500); // Waits for 500ms
 
-  await expect
-    .poll(
-      async () => {
-        const status = await tablePage.getStatus(speaker);
-        return status;
-      },
-      { timeout: 20000 } // Add this option
-    )
-    .toBe("Approved");
+  await expect(tablePage.getRowBySpeaker(speaker)).toHaveCount(1);
+  await expect(tablePage.getStatus(speaker)).toHaveText("Approved", {
+    timeout: 5000,
+  });
+
+  const rowAfter = await tablePage.getRowBySpeaker(speaker).count();
+  expect(rowAfter).toBe(rowBefore);
+
+  const totalAfter = await tablePage.getTotalCount();
+  expect(totalAfter).toBe(totalBefore);
 });
 
-test("Decline a submission and verify status", async ({ page }) => {
+test("Decline session — confirm dialog + row removal (total decrements)", async ({
+  page,
+}) => {
   const tablePage = new SubmissionsTablePage(page);
   await tablePage.navigate();
 
   const speaker = "Jane Smith";
+  const totalBefore = await tablePage.getTotalCount();
+
+  page.once("dialog", async (dialog) => {
+    expect(dialog.message()).toBe(
+      `Are you sure you want to decline the submission for ${speaker}?`
+    );
+    await dialog.accept();
+  });
+
   await tablePage.decline(speaker);
 
-  await expect
-    .poll(
-      async () => {
-        const status = await tablePage.getStatus(speaker);
-        return status;
-      },
-      {
-        timeout: 20000,
-      }
-    )
-    .toContain("Declined");
+  await expect(tablePage.getRowBySpeaker(speaker)).toHaveCount(0);
+
+  const totalAfter = await tablePage.getTotalCount();
+  expect(totalAfter).toBe(totalBefore - 1);
 });
