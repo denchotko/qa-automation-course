@@ -1,18 +1,13 @@
 import { test as base } from "@playwright/test";
 
 export const test = base.extend({
-  testUser: async ({ page }, use) => {
+  testUser: async ({}, use) => {
     console.log("Setting up testUser fixture");
 
-    const registrationUrl = new URL(
-      "../../pages/registration.html",
-      import.meta.url
-    ).href;
-    await page.goto(registrationUrl);
     const user = {
-      username: "john_doe",
+      username: "testUser",
       password: "securePass123",
-      email: "john@example.com",
+      email: "testuser@example.com",
       age: 25,
     };
     await use(user);
