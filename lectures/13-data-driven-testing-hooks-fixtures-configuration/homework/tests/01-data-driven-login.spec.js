@@ -30,7 +30,7 @@ invalidUsers.forEach((user) => {
     // Assert error banner
     await expect(page.locator("#error-message")).toBeVisible();
     await expect(page.locator("#error-message")).toContainText(
-      "Invalid credentials"
+      user.expectedError
     );
   });
 });
