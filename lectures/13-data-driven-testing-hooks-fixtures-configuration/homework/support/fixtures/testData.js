@@ -1,18 +1,19 @@
-import { test as base } from "@playwright/test";
+import { test as base, expect } from "@playwright/test";
 
 export const test = base.extend({
+  // eslint-disable-next-line no-empty-pattern
   testUser: async ({}, use) => {
     console.log("Setting up testUser fixture");
 
-    const user = {
+    const testUser = {
       username: "testUser",
-      password: "securePass123",
-      email: "testuser@example.com",
+      password: "user123",
+      email: "user@example.com",
       age: 25,
     };
-    await use(user);
+    await use(testUser);
     console.log("🧹 Tearing down testUser fixture");
   },
 });
 
-export { expect } from "@playwright/test";
+export { expect };
