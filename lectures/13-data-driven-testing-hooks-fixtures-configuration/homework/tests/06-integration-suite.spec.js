@@ -2,7 +2,7 @@
 //Integration Task - Suite-Level Reuse Across Projects
 //Demnstrates data-driven tests+hooks+optional fixture reuse
 
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../support/fixtures/testData.js";
 import { validUsers } from "../support/userData.js";
 
 const loginUrl = new URL("../../pages/login.html", import.meta.url).href;
