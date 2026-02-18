@@ -1,4 +1,4 @@
-# Homewrok - Integration task
+# Homework - Integration task
 
 ## Objective
 
